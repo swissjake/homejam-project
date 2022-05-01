@@ -6,6 +6,8 @@ import italyflag from '../assets/italyflag.png'
 import reviewImage1 from '../assets/reviewImage1.png'
 import reviewImage2 from '../assets/reviewImage2.png'
 import reviewImage3 from '../assets/reviewImage3.png'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const Reviews = () => {
     type ReviewList = {
@@ -50,7 +52,7 @@ const Reviews = () => {
         paddingRight: {sm:"146px",xs:"16px"},
         paddingTop: {sm:"126px",xs:"102px"},
         marginBottom: "154px"
-    }}>
+            }}>
 
 <Box sx={{
             display: "flex",
@@ -73,7 +75,7 @@ const Reviews = () => {
         variant="h2">Reviews</Typography>
         <Box sx={{width: "48px", height: "3px",backgroundColor: "#0259EB", borderBorder:"16px", marginTop:"8px"}}></Box>
         </Box>
-        <Box sx={{display: "flex", alignItems:"center"}}>
+        <Box sx={{display:{sm:"flex",xs:"none"}, alignItems:"center"}}>
         <Typography sx={{
             color: "rgba(255, 255, 255, .5)",
             width: "62px",
@@ -92,13 +94,25 @@ const Reviews = () => {
         </Box>
 
         {/* Review Cards Goes here  */}
-        <Stack direction="row" marginTop="41px" spacing="18px" justifyContent='center'>
+      
+        {/* Responsive Slider for Mobile Device only */}
+        <Stack direction="row" marginTop="41px" spacing="18px" sx={{justifyContent:{sm:'center'}, display:{xs:'flex', sm:"none"}}}>
+            
+        <Swiper
+            slidesPerView={1}
+            breakpoints={{
+                640:{
+                    slidesPerView:2
+            },
+        }}
+        >
             {reviewList.map((review) => (
-                <Box sx={{width: "368px", height:"248px", backgroundColor:"rgba(39, 108, 115, 1)", position:"relative", borderRadius:"16px"}}>
+                    <SwiperSlide>
+                 <Box sx={{width:{sm:"368px",xs:"328px"}, height:{xs:"232px",sm:"248px"}, backgroundColor:"rgba(39, 108, 115, 1)", position:"relative", borderRadius:"16px"}}>
 
                     
                     {/* The Box on top */}
-                    <Box sx={{width: "368px", height:"248px",right:"8px",left:"",top:"8px", bottom:"0", backgroundColor:"#0A0B1A", position:"absolute",boxSizing:"border-box",borderRadius: "16px", border:"2px solid #E5AF56", padding:"35px 24px"}}>
+                    <Box sx={{width:{sm:"368px", xs:"328px"}, height:{sm:"248px",xs:"232px"},right:"8px",left:"",top:"8px", bottom:"0", backgroundColor:"#0A0B1A", position:"absolute",boxSizing:"border-box",borderRadius: "16px", border:"2px solid #E5AF56", padding:"35px 24px"}}>
                         <Box sx={{display:"flex", alignItems:"center"}}>
                             <img src={review.reviewImage} alt="/" />
                             <Box sx={{marginLeft:"16.57px"}}>
@@ -139,7 +153,69 @@ const Reviews = () => {
                         }} variant="h6" component="p">{review.reviews}</Typography>
                     </Box>
                 </Box>
+                
+                </SwiperSlide>
             ))}
+           </Swiper>
+        </Stack>
+        
+
+
+                             {/* Review Cards Goes here  */}
+      
+
+        <Stack direction="row" marginTop="41px" spacing="18px" sx={{justifyContent:{sm:'center'}, display:{xs:'none', sm:"flex"}}}>
+            
+            {reviewList.map((review) => (
+                 <Box sx={{width:{sm:"368px",xs:"328px"}, height:{xs:"232px",sm:"248px"}, backgroundColor:"rgba(39, 108, 115, 1)", position:"relative", borderRadius:"16px"}}>
+
+                    
+                    {/* The Box on top */}
+                    <Box sx={{width:{sm:"368px", xs:"328px"}, height:{sm:"248px",xs:"232px"},right:"8px",left:"",top:"8px", bottom:"0", backgroundColor:"#0A0B1A", position:"absolute",boxSizing:"border-box",borderRadius: "16px", border:"2px solid #E5AF56", padding:"35px 24px"}}>
+                        <Box sx={{display:"flex", alignItems:"center"}}>
+                            <img src={review.reviewImage} alt="/" />
+                            <Box sx={{marginLeft:"16.57px"}}>
+                                <Typography sx={{
+                                    color: "white",
+                                    fontSize:"16px",
+                                    fontWeight:"700",
+                                    fontFamily:"Quattrocento"
+                                }} 
+                                variant="h6" component="p">{review.name}
+                                </Typography>
+
+
+                                <Box sx={{display:"flex", alignItems:"center"}}>
+                                     <img style={{width: "24px", height:"24px"}} src={review.flag} alt="/" />
+                                     <Typography sx={{
+                                         fontSize: "11px",
+                                         textTransform:"uppercase",
+                                         fontFamily:"nunito",
+                                         fontWeight: "600",
+                                         color: "#E5C558",
+                                         width: "80px",
+                                         marginLeft: "8px",
+                                         whiteSpace: "nowrap",
+                                         height: "16px"
+                                     }} variant="h6" component="p">{review.country}</Typography>
+                                </Box>
+                            {/* <Typography variant="h6" component="p">{review.reviews}</Typography> */}
+                            </Box>
+                          
+                        </Box>
+                        <Typography sx={{
+                            fontFamily: "nunito",
+                            fontSize: "16px",
+                            fontWeight:"400",
+                            color: "rgba(255, 255, 255, .9)",
+                            marginTop: "23.31px"
+                        }} variant="h6" component="p">{review.reviews}</Typography>
+                    </Box>
+                </Box>
+                
+
+            ))}
+          
         </Stack>
     </Box>
   )

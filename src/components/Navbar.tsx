@@ -1,6 +1,5 @@
 import { MenuOutlined, Search, ShoppingBagOutlined } from "@mui/icons-material"
 import { Box, List, ListItem, } from "@mui/material"
-import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../assets/image52.png'
 
 const Navbar = () => {
@@ -11,6 +10,8 @@ const Navbar = () => {
         display: "flex",
         justifyContent: "space-between",
     }}>
+
+        {/* Logo */}
 
         <Box sx={{
             marginLeft:{md:"143px",xs:"11px"},
@@ -28,7 +29,10 @@ const Navbar = () => {
             fontSize: "14px",
             alignItems: "center"
         }}>
-                    <ListItem sx={{marginRight:{sm:'37px',xs:'28px'}, width:{xs:'14px'}, height:{xs:'14px'}}}>
+
+
+                                {/* Navbar List */}
+                    <ListItem sx={{marginRight:{sm:'37px',xs:'20px'}, width:{xs:'14px'}, height:{xs:'14px'}}}>
                         <Search />
                     </ListItem>
                     <ListItem sx={{ display:{xs:'none',sm:'block'},marginRight: "37px"}}>
@@ -40,7 +44,7 @@ const Navbar = () => {
                     <ListItem sx={{display:{xs:'none',sm:'flex'},marginRight: "32.4px"}}>
                        Account
                     </ListItem>
-                    <ListItem sx={{marginRight:{sm:"162.9px",xs:"32px"}}}> 
+                    <ListItem sx={{marginRight:{sm:"162.9px",xs:"5px"}}}> 
                         <ShoppingBagOutlined/>
                     </ListItem>
                     <ListItem sx={{display:{xs:'block',sm:'none'},marginRight:{xs:"22px"}}}>
