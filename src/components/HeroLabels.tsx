@@ -49,7 +49,7 @@ const HeroLabels = () => {
       <Box>
     <Stack direction="row" alignItems="center" sx={{justifyContent:{sm:"center"}, columnGap:{sm:'83px', xs:"20px", display:{sm:"none", xs:"flex"}}}}>
         <Swiper>
-        {labelList.map((item: any) => (
+        {labelList.map((item: any) => ( 
             <>
                     <SwiperSlide>
                 <LabelContent sx={{width:{sm:"208px", xs:"144px"},height:{sm:"208px", xs:"144px"}}} key={item.id}>
